@@ -161,20 +161,25 @@ export const login =(email,password) => async(dispatch)=>{
 }
 
 
-export const updateProfile =(data)=>async(dispatch)=>{
+export const updateProfile = (data) => async (dispatch) => {
     dispatch(userSlice.actions.updateProfileRequest());
-    try{
-            const {data} = await axios.put("http://localhost:3000/api/v1/user/update/me",
-                data,
-                {withCredentials:true, headers:{"Content-Type":"multipart/form-data"}}
-            );
-            dispatch(userSlice.actions.updateProfileSuccess(data.message));
-            dispatch(userSlice.actions.clearAllErrors());
+    try {
+      const response = await axios.put(
+        "http://localhost:3000/api/v1/user/update/me",
+        data,
+        {
+          withCredentials: true,
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
+      dispatch(userSlice.actions.updateProfileSuccess(response.data.message));
+      dispatch(userSlice.actions.clearAllErrors());
+    } catch (error) {
+      dispatch(
+        userSlice.actions.updateProfileFailed(error.response.data.message)
+      );
     }
-    catch(error){
-            dispatch(userSlice.actions.updateProfileFailed(error.response.data.message));
-    }
-}
+  };
 export const updatePassword =(currentPassword,newPassword,confirmNewPassword)=>async(dispatch)=>{
     dispatch(userSlice.actions.updatePasswordRequest());
     try{

@@ -1,17 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { clearAllUserErrors } from "@/store/slices/userSlice";
 import { forgotPassword } from "@/store/slices/forgotResetPasswordSlice";
 import { toast } from "react-toastify";
-import {SpecialLoadingButton} from "./sub-components/SpecialLoadingButton";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
+import SpecialLoadingButton from "./sub-components/SpecialLoadingButton";
 
-
-
-export const ForgotPassword = () => {
+const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const { loading, error, message } = useSelector(
     (state) => state.forgotPassword
@@ -89,4 +87,4 @@ export const ForgotPassword = () => {
   );
 };
 
-
+export default ForgotPassword;

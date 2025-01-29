@@ -9,10 +9,10 @@ import {
   clearAllForgotResetPassErrors,
 } from "@/store/slices/forgotResetPasswordSlice";
 import { getUser } from "@/store/slices/userSlice";
-import {SpecialLoadingButton} from "./sub-components/SpecialLoadingButton";
+import SpecialLoadingButton from "./sub-components/SpecialLoadingButton";
 import { toast } from "react-toastify";
 
-export const ResetPassword = () => {
+const Login = () => {
   const { token } = useParams();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -90,3 +90,4 @@ export const ResetPassword = () => {
   );
 };
 
+export default Login;

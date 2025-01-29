@@ -45,9 +45,6 @@ export const getSingleProject = catchAsyncErrors(async(req,res,next)=>{
     if (!project) {
       return next(new ErrorHandler("Project Not Found", 404));
     }
-    const projectImgId = project.projectBanner.public_id;
-    await cloudinary.uploader.destroy(projectImgId);
-    await project.deleteOne();
     res.status(200).json({
       success: true,
       project
