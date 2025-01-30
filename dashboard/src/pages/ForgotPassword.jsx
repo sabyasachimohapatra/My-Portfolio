@@ -80,8 +80,8 @@ const ForgotPassword = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center items-center bg-muted">
-        <img src="/forgot.png" alt="login" />
+      <div className="flex justify-center items-center bg-white">
+        <img src="/forgot.jpeg" alt="forgotpassword" />
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ export const sendMessage= catchAsyncErrors(async(req,res,next)=>{
     if(!senderName || !subject || !message){
         return next(new ErrorHandler("please fill full form ",400));
     }
-    const data = await Message.create(senderName,subject,message);
+    const data = await Message.create({senderName,subject,message});
     res.status(200).json({
         success:true,
         message: "Message Sent", 
