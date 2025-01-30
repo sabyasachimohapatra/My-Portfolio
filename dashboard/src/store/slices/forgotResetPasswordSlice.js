@@ -55,7 +55,7 @@ const forgotRestPassSlice = createSlice({
 export const forgotPassword =(email) => async(dispatch)=>{
      dispatch(forgotRestPassSlice.actions.forgotPasswordRequest());
     try {
-        const {data} = await axios.post("http://localhost:3000/api/v1/user/password/forgot",
+        const {data} = await axios.post("https://my-portfolio-backend-u1um.onrender.com/api/v1/user/password/forgot",
                                         {email},
                                         {withCredentials:true, headers:{"Content-Type":"application/json"}}
                 );
@@ -71,7 +71,7 @@ export const forgotPassword =(email) => async(dispatch)=>{
 export const resetPassword =(token,password,confirmPassword) => async(dispatch)=>{
     dispatch(forgotRestPassSlice.actions.resetPasswordRequest());
     try {
-        const {data} = await axios.put(`http://localhost:3000/api/v1/user/password/reset/${token}`,
+        const {data} = await axios.put(`https://my-portfolio-backend-u1um.onrender.com/api/v1/user/password/reset/${token}`,
                                         {password,confirmPassword},
                                         {withCredentials:true, headers:{"Content-Type":"application/json"}}
                 );
